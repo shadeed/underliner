@@ -1,0 +1,97 @@
+@import "reset.scss";
+
+body {
+	padding: 1rem;
+	font-family: 'IBM Plex Sans', sans-serif;
+}
+
+svg {
+	display: block;
+}
+
+.group {
+	//outline: 1px solid lightgrey;
+	padding: 1rem;
+	margin-bottom: 2.5rem;
+}
+
+.c-nav {
+	
+	margin: 1rem 0 2rem;
+
+	@media (min-width: 1000px) {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.c-nav__item {
+	margin-right: 1.5rem;
+	font-size: 1.5rem;
+
+	a {
+		display: inline-block;
+		text-decoration: none;
+		color: #000;
+		margin-bottom: 4px;
+		transition: 0.4s;
+	}
+
+	svg {
+		pointer-events: none;
+        transition: 0.5s;
+        //outline: solid 1px lightgrey;
+	}
+
+	path {
+        transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s, opacity 0.5s;
+        
+        &:last-child {
+            opacity: 0.2;
+        }
+	}
+
+	a {
+		&:hover,
+		&:focus {
+			color: #00bc9b;
+		}
+	}
+
+	a:hover + svg,
+	a:focus + svg {
+		opacity: 1;
+
+		path {
+			stroke-dashoffset: 0;	
+		}
+	}
+}
+
+#path1 {
+	opacity: 0.25;
+}
+
+.c-form {
+	max-width: 500px;
+	margin: 0 auto;
+
+	legend {
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+
+	label {
+		user-select: none;
+	}
+}
+
+.c-form__item {
+	margin-bottom: 1rem;
+}
+
+.c-nav-2 {
+	.c-nav__item {
+		font-size: 1rem;
+	}
+}
