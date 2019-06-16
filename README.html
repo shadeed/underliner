@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<h1 id="underliner.js">Underliner.js</h1>
+
+<figure>
+<img src="https://ishadeed.com/assets/underliner/path-animation.gif" alt="" />
+<figcaption></figcaption>
+</figure>
+
+<p>Underliner is a simple script that can help in creating custom link underline effects with SVG paths. I wrote an <a href="https://ishadeed.com/article/custom-underline-svg/">article</a> about it.</p>
+
+<h2 id="usage">Usage</h2>
+
+<pre><code class="js">var underliner = new Underliner(
+	selector, 
+	path1_color, 
+	path2_color, 
+	path1_thickness, 
+	path2_thickness, 
+	strokeLinecap, 
+	RTL);
+</code></pre>
+
+<p><code>selector</code>: an array of links.</p>
+
+<p><code>path1_color</code>, <code>path2_color</code>: a single color, or a gradient with SVG.</p>
+
+<p><code>path1_thickness</code>, <code>path2_thickness</code>: the stroke width of a path</p>
+
+<p>strokeLinecap: controlling how edges of a path are shown</p>
+
+<p><code>RTL</code>: a boolean variable to change the direction of the animation</p>
+
+<p>When assigning Underline to a list of links, it will add an SVG with two paths. Each path will have an ID to style it with CSS.</p>
+
+<pre><code class="scss">.c-nav__item {
+	svg {
+		pointer-events: none;
+        transition: 0.5s;
+	}
+
+	path {
+        transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s, opacity 0.5s;
+        
+        &amp;:last-child {
+            opacity: 0.2;
+        }
+	}
+
+	a:hover + svg,
+	a:focus + svg {
+		opacity: 1;
+
+		path {
+			stroke-dashoffset: 0;	
+		}
+	}
+}
+
+#path1 {
+	opacity: 0.25;
+}
+</code></pre>
+
+<p>Checkout this <a href="https://codepen.io/shadeed/pen/OeNbMO">Codepen</a> demo.</p>
+
+</body>
+</html>
+

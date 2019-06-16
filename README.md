@@ -1,6 +1,8 @@
 # Underliner.js
 
-Underliner is a simple script that can help in creating custom link underline effects with SVG paths. I wrote an [article](www.ishadeed.com) about it.
+![](https://ishadeed.com/assets/underliner/path-animation.gif) 
+
+Underliner is a simple script that can help in creating custom link underline effects with SVG paths. I wrote an [article](https://ishadeed.com/article/custom-underline-svg/) about it.
 
 ## Usage
 
