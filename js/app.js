@@ -12,11 +12,11 @@ class Underliner {
     }
 
     init() {
-        var self = this;
+        let self = this;
 
         self.links.forEach(function (link) {
-            var linkWidth = parseInt(link.offsetWidth);
-            var svg = self.createSVG(linkWidth);
+            let linkWidth = parseInt(link.offsetWidth);
+            let svg = self.createSVG(linkWidth);
             self.insertAfter(svg, link);
         });
     }
@@ -29,29 +29,29 @@ class Underliner {
         path.setAttribute("stroke", color);
         path.setAttribute("stroke-width", thickness);
         path.setAttribute("stroke-linecap", strokeLinecap);
-        path.setAttribute("stroke-dasharray", path.getTotalLength() + 5);
-        path.setAttribute("stroke-dashoffset", path.getTotalLength() + 5);
+        path.setAttribute("stroke-dasharray", path.getTotalLength() + 10);
+        path.setAttribute("stroke-dashoffset", path.getTotalLength() + 10);
 
         return path;
     }
 
     randomizePath(linkWidth) {
-        var moveYMin = 5;
-        var moveYMax = 12;
+        let moveYMin = 5;
+        let moveYMax = 12;
 
-        var curveXMin = 15;
-        var curveXMax = linkWidth; /* Width of the link */
-        var curveYMin = 7;
-        var curveYMax = linkWidth * 0.12; /* Making the quadratic propotional to the link width */
-        //var curveYMax = 20
+        let curveXMin = 15;
+        let curveXMax = linkWidth; /* Width of the link */
+        let curveYMin = 7;
+        let curveYMax = linkWidth * 0.12; /* Making the quadratic propotional to the link width */
+        //let curveYMax = 20
 
-        var endYMin = 5;
-        var endYMax = 11;
+        let endYMin = 5;
+        let endYMax = 11;
 
-        var moveY = Math.floor(Math.random() * (moveYMax - moveYMin)) + moveYMin;
-        var curveX = Math.floor(Math.random() * (curveXMax - curveXMin)) + curveXMin;
-        var curveY = Math.floor(Math.random() * (curveYMax - curveYMin)) + curveYMin;
-        var endY = Math.floor(Math.random() * (endYMax - endYMin)) + endYMin;
+        let moveY = Math.floor(Math.random() * (moveYMax - moveYMin)) + moveYMin;
+        let curveX = Math.floor(Math.random() * (curveXMax - curveXMin)) + curveXMin;
+        let curveY = Math.floor(Math.random() * (curveYMax - curveYMin)) + curveYMin;
+        let endY = Math.floor(Math.random() * (endYMax - endYMin)) + endYMin;
 
         return `M5 ${moveY} Q ${curveX} ${curveY} ${linkWidth - 7} ${endY}`
     }
@@ -65,8 +65,8 @@ class Underliner {
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-        var pathD = this.randomizePath(linkWidth);
-        var pathD2 = this.randomizePath(linkWidth);
+        let pathD = this.randomizePath(linkWidth);
+        let pathD2 = this.randomizePath(linkWidth);
 
         if(this.rtl === true) {
             pathD = this.reverseMe(pathD);
@@ -84,8 +84,8 @@ class Underliner {
     reverseMe(path) {
         /* Regex functions borrwed from 
         https://github.com/krispo/svg-path-utils/blob/master/src/svg-path-utils.js */
-        var pathOperators = path.replace(/[\d,\-\s]+/g, '').split('');
-        var pathNums = path.replace(/[A-Za-z,]+/g, ' ').trim().replace(/\s\s+/g, ' ').split(' ');
+        let pathOperators = path.replace(/[\d,\-\s]+/g, '').split('');
+        let pathNums = path.replace(/[A-Za-z,]+/g, ' ').trim().replace(/\s\s+/g, ' ').split(' ');
     
         return `${pathOperators[0]} ${pathNums[4]} ${pathNums[5]} ${pathOperators[1]} ${pathNums[2]} ${pathNums[3]} ${pathNums[0]} ${pathNums[1]}`;
     }
@@ -96,6 +96,6 @@ class Underliner {
     }
 }
 
-var test = new Underliner(".underliner a", "url(#gradient)", "url(#gradient2)", 7, 12, "round", true);
+let test = new Underliner(".underliner a", "url(#gradient)", "url(#gradient2)", 7, 12, "round", false);
 
-var test2 = new Underliner(".underliner-small a", "url(#gradient)", "url(#gradient2)", 3, 6, "round");
+let test2 = new Underliner(".underliner-small a", "url(#gradient)", "url(#gradient2)", 3, 6, "round");
